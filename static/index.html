@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css" />
+    <title>Discover New York</title>
+</head>
+<body>
+    <main>
+        <img loading="lazy" id="img-main" src="/static/assets/freddie-marriage-IB9AOO-36yI-unsplash.webp" />
+        <div id="info">
+                <!-- <p class="secondary-info">Photo by <a href="https://unsplash.com/@fredmarriage?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">freddie marriage</a> on <a href="https://unsplash.com/photos/gray-high-rise-building-near-freedom-tower-at-daytime-IB9AOO-36yI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+                </p> -->
+            <div id="text-wrapper">
+                <article>
+                    <h1>Discover New York with Google Maps!</h1>
+                    <p>Learn how different architectural styles shaped the landscape of New York City. Walk the streets and learn about iconic buildings with Google Photorealistic 3D Maps!</p>
+                </article>
+                <div class="input-wrapper">
+                    <label>discover:</label>
+                    <div class="custom-select">
+                        <input readonly id="select" value="Art Deco" class="current-style" />
+                        <ul class="styles fade-in-class" id="style-select">
+                            <li class="option" data-value="Art Deco">Art Deco</li>
+                            <li class="option" data-value="Colonial/Neo-Colonial">Colonial/Neo-Colonial</li>
+                            <li class="option" data-value="Neoclassical/Greek Revival">Neoclassical/Greek Revival</li>
+                        </ul>     
+                    </div>                 
+                    <button id="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-map">
+
+        </div>
+    </main>
+    <script src="/static/app.js"></script>
+    <!-- Development Mode Only -->
+    <script>
+        const socket = new WebSocket("ws://localhost:8080/ws");
+    
+        socket.onmessage = function(event) {
+            if (event.data === "reload") {
+                location.reload();
+            }
+        };
+    
+        socket.onclose = function() {
+            console.log("WebSocket connection closed");
+        };
+    </script>
+</body>
+</html>
